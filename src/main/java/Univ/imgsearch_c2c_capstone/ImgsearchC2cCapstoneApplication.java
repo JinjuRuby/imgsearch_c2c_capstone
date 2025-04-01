@@ -8,6 +8,9 @@ public class ImgsearchC2cCapstoneApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ImgsearchC2cCapstoneApplication.class, args);
+
+
+
 	}
 
 }
