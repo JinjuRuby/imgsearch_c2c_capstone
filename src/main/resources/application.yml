@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: imgsearch_c2c_capstone
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/snapshopping?serverTimezone=Asia/Seoul
+    username: root
+    password: 5057
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
