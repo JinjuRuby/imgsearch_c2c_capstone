@@ -19,4 +19,8 @@ public class User {
 
     @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
+    private int point = 0;
+
 }
