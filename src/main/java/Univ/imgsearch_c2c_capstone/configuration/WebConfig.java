@@ -1,4 +1,4 @@
-package Univ.imgsearch_c2c_capstone.config;
+package Univ.imgsearch_c2c_capstone.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;

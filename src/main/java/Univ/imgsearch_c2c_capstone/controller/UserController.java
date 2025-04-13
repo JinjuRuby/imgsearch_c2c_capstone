@@ -1,6 +1,6 @@
 package Univ.imgsearch_c2c_capstone.controller;
 
-import Univ.imgsearch_c2c_capstone.entity.User;
+import Univ.imgsearch_c2c_capstone.entity.Users;
 import Univ.imgsearch_c2c_capstone.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +22,12 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+    public ResponseEntity<String> register(@RequestBody Users users) {
+        if (userRepository.findByEmail(users.getEmail()).isPresent()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이미 존재하는 회원입니다.");
         }
 
-        userRepository.save(user);
+        userRepository.save(users);
         return ResponseEntity.ok("회원가입 성공!");
     }
 
@@ -38,8 +38,8 @@ public class UserController {
         String password = request.get("password");
 
         return userRepository.findByEmail(email)
-                .filter(user -> user.getPassword().equals(password))
-                .map(user -> ResponseEntity.ok("로그인 성공!|" + user.getName()))
+                .filter(users -> users.getPassword().equals(password))
+                .map(users -> ResponseEntity.ok("로그인 성공!|" + users.getName()))
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패: 정보가 일치하지 않습니다."));
     }
 
@@ -50,13 +50,13 @@ public class UserController {
         String password = request.get("password");
 
         return userRepository.findByEmail(email)
-                .map(user -> {
-                    if (!user.getPassword().equals(password)) {
+                .map(users -> {
+                    if (!users.getPassword().equals(password)) {
                         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                                 .body("비밀번호가 일치하지 않습니다.");
                     }
 
-                    userRepository.delete(user);
+                    userRepository.delete(users);
                     return ResponseEntity.ok("회원 탈퇴 되었습니다");
                 })
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -73,10 +73,10 @@ public class UserController {
     // 포인트 조회
     @GetMapping("/point")
     public ResponseEntity<?> getPoint(@RequestParam String email) {
-        User user = userRepository.findByEmail(email)
+        Users users = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."));
 
-        return ResponseEntity.ok(user.getPoint());
+        return ResponseEntity.ok(users.getPoint());
     }
 
 
@@ -87,13 +87,13 @@ public class UserController {
             return ResponseEntity.badRequest().body("양의 정수만 가능합니다.");
         }
 
-        User user = userRepository.findByEmail(email)
+        Users users = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."));
 
-        user.setPoint(user.getPoint() + amount);
-        userRepository.save(user);
+        users.setPoint(users.getPoint() + amount);
+        userRepository.save(users);
 
-        return ResponseEntity.ok(user.getPoint());
+        return ResponseEntity.ok(users.getPoint());
     }
 
 
