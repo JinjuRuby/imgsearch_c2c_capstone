@@ -72,7 +72,7 @@ public class UserController {
 
     // 포인트 조회
     @GetMapping("/point")
-    public ResponseEntity<?> getPoint(@RequestParam String email) {
+    public ResponseEntity<?> getPoint(@RequestParam("email") String email) {
         Users users = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."));
 
@@ -82,7 +82,7 @@ public class UserController {
 
     // 포인트 충전
     @PostMapping("/point")
-    public ResponseEntity<?> addPoint(@RequestParam String email, @RequestParam int amount) {
+    public ResponseEntity<?> addPoint(@RequestParam(name = "email") String email, @RequestParam(name = "amount") int amount) {
         if (amount <= 0) {
             return ResponseEntity.badRequest().body("양의 정수만 가능합니다.");
         }
