@@ -1,3 +1,42 @@
+#spring:
+#  application:
+#    name: imgsearch_c2c_capstone
+#
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/snapshopping?serverTimezone=Asia/Seoul
+#    username: root
+#    password: 5057
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#server:
+#  address: 0.0.0.0    # ✅ 외부 기기 접근 허용
+#  port: 8080          # ✅ Spring 서버 포트
+#
+#upload:
+#  dir: uploads        # ✅ 이미지 저장 경로
+#
+#clip:
+#  api:
+#    url: http://192.168.0.101:8000/api/products/search-by-image  # ✅ FastAPI IP로 설정
+
+
+
+
+
+
+
+
+
+
+
 spring:
   application:
     name: imgsearch_c2c_capstone
@@ -16,5 +55,18 @@ spring:
       hibernate:
         format_sql: true
 
+  servlet:
+    multipart:
+      max-file-size: 10MB         # ✅ 단일 파일 최대 크기
+      max-request-size: 10MB      # ✅ 전체 요청 최대 크기
+
 server:
+  address: 0.0.0.0
   port: 8080
+
+upload:
+  dir: uploads
+
+clip:
+  api:
+    url: http://192.168.0.101:8000/api/products/search-by-image
