@@ -1,7 +1,6 @@
 package Univ.imgsearch_c2c_capstone.service;
 
 import Univ.imgsearch_c2c_capstone.dto.PurchaseHistoryDTO;
-import Univ.imgsearch_c2c_capstone.entity.PurchaseHistory;
 import Univ.imgsearch_c2c_capstone.repository.PurchaseHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

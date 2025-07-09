@@ -1,7 +1,6 @@
 package Univ.imgsearch_c2c_capstone.controller;
 
 import Univ.imgsearch_c2c_capstone.dto.ProductResponse;
-import Univ.imgsearch_c2c_capstone.dto.ProductSimilarity;
 import Univ.imgsearch_c2c_capstone.entity.Products;
 import Univ.imgsearch_c2c_capstone.entity.Users;
 import Univ.imgsearch_c2c_capstone.repository.ProductRepository;
