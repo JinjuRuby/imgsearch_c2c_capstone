@@ -67,34 +67,6 @@ snapshopping/
 
 ---
 
-## 실행 방법
-
-### Backend (Spring Boot)
-
-```bash
-cd backend
-./gradlew build
-java -jar build/libs/your-app.jar
-```
-
-### Frontend (React)
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-### AI 서버 (Python)
-
-```bash
-cd imgsearch
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
----
-
 ## 향후 개선사항
 
 - 실 결제 API 연동
