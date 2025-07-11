@@ -18,7 +18,7 @@ import java.io.IOException;
 public class ImageSearchController {
 
     @Value("${clip.api.url}")
-    private String clipApiUrl;  // ex: http://localhost:8000/api/products/search-by-image
+    private String clipApiUrl;
 
     @PostMapping
     public ResponseEntity<String> searchByImage(@RequestParam("image") MultipartFile file) throws IOException {
